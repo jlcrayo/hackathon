@@ -1,0 +1,39 @@
+{
+  "root": "packages/twitter-fetcher",
+  "sourceRoot": "packages/twitter-fetcher/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/twitter-fetcher",
+        "main": "packages/twitter-fetcher/src/index.ts",
+        "tsConfig": "packages/twitter-fetcher/tsconfig.app.json",
+        "assets": ["packages/twitter-fetcher/*.md"]
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/js:node",
+      "options": {
+        "buildTarget": "twitter-fetcher:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/twitter-fetcher/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/twitter-fetcher"],
+      "options": {
+        "jestConfig": "packages/twitter-fetcher/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

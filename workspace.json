@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "projects": {
+    "express-server": "packages/express-server",
+    "kafka": "packages/kafka",
+    "sentiment-analyzer": "packages/sentiment-analyzer",
+    "twitter-fetcher": "packages/twitter-fetcher"
+  }
+}

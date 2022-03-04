@@ -1,0 +1,39 @@
+{
+  "root": "packages/sentiment-analyzer",
+  "sourceRoot": "packages/sentiment-analyzer/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/sentiment-analyzer",
+        "main": "packages/sentiment-analyzer/src/index.ts",
+        "tsConfig": "packages/sentiment-analyzer/tsconfig.app.json",
+        "assets": ["packages/sentiment-analyzer/*.md"]
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/js:node",
+      "options": {
+        "buildTarget": "sentiment-analyzer:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/sentiment-analyzer/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/sentiment-analyzer"],
+      "options": {
+        "jestConfig": "packages/sentiment-analyzer/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

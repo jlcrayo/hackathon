@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+
+  kafka:
+    image: vectorized/redpanda:latest
+    hostname: kafka
+    ports:
+      - '9092:9092'
+      - '9644:9644'
+    
+    command: redpanda start --overprovisioned --smp 1 --memory 1G --reserve-memory 0M --node-id 0 --check=false
+    healthcheck:
+      test: ["CMD", "curl", "-f", "localhost:9644/v1/status/ready"]
+      interval: 250s
+      retries: 5
+      start_period: 50s 
+
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: microservices
+    ports:
+      - "26017:27017"
